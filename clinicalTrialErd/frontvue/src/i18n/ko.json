@@ -1,0 +1,23 @@
+{
+  "dashboard": "대쉬보드",
+  "search": "검색",
+  "calendar": "달력",
+  "mailbox": "메일함",
+  "widgets": "위젯",
+  "social": "Social",
+  "charts": "차트",
+  "media": "미디어",
+  "overlays": "Overlays",
+  "snackbar": "Snackbar",
+  "authorization": "Authorization",
+  "login": "로그인",
+  "users": "유저",
+  "widgetTodaysVisit": "오늘 방문수",
+  "widgetTodaysSale": "오늘 판매수",
+  "widgetUniqueVisits": "% Unique Visits",
+  "widgetBounceRate": "Bounce Rate",
+  "widgetHigherYesterday": "{0} higher yesterday",
+  "widgetBeforeTax": "{0} before tax",
+  "widgetAverageDuration": "{0} average duration",
+  "widgetAverageTime": "{0}  on average time"
+}
