@@ -13,10 +13,6 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './styles/global.css';
 
 import axios from 'axios'
-import VueAxios from 'vue-axios'
-
-Vue.use(VueAxios, axios);
-
 import VueChartkick from 'vue-chartkick';
 import Chart from 'chart.js';
 import fullCalendar from 'vue-fullcalendar';
@@ -30,6 +26,8 @@ import swatches from 'vue-swatches';
 import "vue-swatches/dist/vue-swatches.min.css"
 
 Vue.use(VueChartkick, { adapter: Chart });
+axios.defaults.baseURL = 'http://localhost:8080'
+Vue.prototype.$axios = axios
 Vue.component('full-calendar', fullCalendar);
 Vue.component('swatches', swatches);
 

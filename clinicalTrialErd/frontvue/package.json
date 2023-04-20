@@ -1,7 +1,7 @@
 {
-  "name": "vue-admin-panel",
+  "name": "vue-admin",
   "version": "1.0.0",
-  "description": "An Admin Panel with Vue.js",
+  "description": "An Admin with Vue.js",
   "author": "shwogjs00@naver.com",
   "private": true,
   "scripts": {

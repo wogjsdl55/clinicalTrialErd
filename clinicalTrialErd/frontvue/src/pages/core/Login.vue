@@ -59,8 +59,8 @@ export default {
   data() {
     return {
       loading: false,
-      userEmail: 'admin@yopmail.com',
-      password: '123456',
+      userEmail: '',
+      password: '12',
       hidePassword: true,
       error: false,
       showResult: false,
@@ -88,14 +88,6 @@ export default {
         return;
       }
 
-      if (vm.userEmail === vm.$root.userEmail && vm.password === vm.$root.userPassword) {
-        vm.$router.push({ name: 'Dashboard' });
-      }
-      else {
-        vm.error = true;
-        vm.result = "Email or Password is incorrect.";
-        vm.showResult = true;
-      }
     }
   }
 }

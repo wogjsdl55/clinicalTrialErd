@@ -1,4 +1,4 @@
-package Entity;
+package clinical.data;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +10,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "member")
 public class memberEntity {
-
+	
+	//Entity 클래스는 실제 DB 테이블과 매핑되는 핵심 클래스로, 데이터베이스의 테이블에 존재하는 컬럼들을 필드로 가지는 객체입니다.
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer seq;
@@ -31,10 +33,10 @@ public class memberEntity {
 		this.user_pwd = user_pwd;
 	}
 	
-	public long getSeq() {
+	public Integer getSeq() {
 		return seq;
 	}
-	public void setId(int seq) {
+	public void setSeq(int seq) {
 		this.seq = seq;
 	}
 	public String getUserEmail() {

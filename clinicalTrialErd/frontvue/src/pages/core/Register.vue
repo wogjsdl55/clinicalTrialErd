@@ -26,15 +26,15 @@
                       type="text"
                       v-model="userEmail"
                       :error="error"
-                      :rules="[rules.required]"/>
+                      :rules="[rules.reg_email]"/>
                     <v-text-field
                       :type="hidePassword ? 'password' : 'text'"
                       :append-icon="hidePassword ? 'visibility_off' : 'visibility'"
                       name="password"
-                      label="패스워든"
+                      label="패스워드"
                       id="password"
                       :rules="[rules.required]"
-                      v-model="password"
+                      v-model="userPassword"
                       :error="error"
                       @click:append="hidePassword = !hidePassword"/>
                   </v-form>
@@ -62,20 +62,21 @@
     </v-app>
   </template>
   
-  <script>
+<script>
   export default {
     data() {
       return {
         loading: false,
         userName: '',
         userEmail: '',
-        password: '',
+        userPassword: '',
         hidePassword: true,
         error: false,
         showResult: false,
         result: '',
         rules: {
           required: value => !!value || 'Required.'
+          , reg_email: v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || '이메일 형식으로 부탁드립니다.'
         }
       }
     },
@@ -96,21 +97,32 @@
   
           return;
         }
-        if (!vm.password) {  
+
+        if (!vm.userPassword) {  
           vm.result = "패스워드가 입력되지 않았습니다.";
           vm.showResult = true;
   
           return;
         }
-  
-        if (vm.userEmail === vm.$root.userEmail && vm.password === vm.$root.userPassword) {
-          vm.$router.push({ name: 'Dashboard' });
-        }
-        else {
-          vm.error = true;
-          vm.result = "Email or Password is incorrect.";
-          vm.showResult = true;
-        }
+        //axios 통신으로 spring에 데이터 전달
+        this.$axios.post('http://localhost:8080/member/insInfo', {
+          headers : {"Content-Type" : "application/json"},
+          params: {
+		        user_name: vm.userName
+            , user_pwd: vm.userPassword
+            , user_email: vm.userEmail
+	        }
+        })
+        .then(function(response) {
+          if(response.data ==1){
+            alert('회원가입을 성공하였습니다.')
+          }else{
+            alert('오류='+ response.data);
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
       }
     }
   }

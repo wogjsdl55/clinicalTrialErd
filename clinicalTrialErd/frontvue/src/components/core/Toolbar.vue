@@ -319,7 +319,7 @@ export default {
         }
       ],
       languages: [
-        { name: 'Korean', languageCode: 'ko', path: require('../../assets/flags/en.png') },
+        { name: 'Korean', languageCode: 'ko', path: require('../../assets/flags/ko.png') },
         { name: 'English', languageCode: 'en', path: require('../../assets/flags/en.png') },
         { name: 'Turkish', languageCode: 'tr', path: require('../../assets/flags/tr.png') },
         { name: 'French', languageCode: 'fr', path: require('../../assets/flags/fr.png') },

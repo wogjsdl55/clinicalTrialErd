@@ -1,13 +1,13 @@
-package controller;
+package clinical;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class mainController {
-
+public class springApplication {
+		
 	public static void main(String[] args) {
-		 SpringApplication.run(mainController.class, args);
+		 SpringApplication.run(springApplication.class, args);
 	}
 
 }
