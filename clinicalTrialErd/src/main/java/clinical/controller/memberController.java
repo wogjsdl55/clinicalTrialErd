@@ -25,7 +25,7 @@ public class memberController {
     public String insMemberInfo(@RequestBody memberDto member) {
 		String reulstCode = "";
 		System.out.println("test="+ member);
-		reulstCode = MemberService.insMember();
+		reulstCode = MemberService.insMember(member);
 		
         return reulstCode;
     }
