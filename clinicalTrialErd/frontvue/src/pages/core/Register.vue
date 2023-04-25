@@ -91,6 +91,7 @@
   
           return;
         }
+
         if (!vm.userEmail) {  
           vm.result = "이메일이 입력되지 않았습니다.";
           vm.showResult = true;
@@ -105,19 +106,17 @@
           return;
         }
         //axios 통신으로 spring에 데이터 전달
-        this.$axios.post('http://localhost:8080/member/insInfo', {
+        vm.$axios.post('http://localhost:8080/member/insMemberInfo', {
           headers : {"Content-Type" : "application/json"},
-          params: {
-		        user_name: vm.userName
-            , user_pwd: vm.userPassword
-            , user_email: vm.userEmail
-	        }
+		      user_name: vm.userName
+          , user_pwd: vm.userPassword
+          , user_email: vm.userEmail
         })
         .then(function(response) {
-          if(response.data ==1){
-            alert('회원가입을 성공하였습니다.')
+          if(response.data != 0){
+            alert(response.data);
           }else{
-            alert('오류='+ response.data);
+            alert('오류가 발생하였습니다.' + response.data);
           }
         })
         .catch(function(error) {

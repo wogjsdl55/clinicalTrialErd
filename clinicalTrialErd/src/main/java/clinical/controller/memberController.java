@@ -4,14 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import clinical.data.memberDto;
-import clinical.data.memberEntity;
 import clinical.service.memberService;
 
 @RestController
@@ -21,25 +19,25 @@ public class memberController {
 	@Autowired
 	memberService MemberService;
 	
-	@PostMapping("insInfo")
+	//회원가입 API
+	@PostMapping("insMemberInfo")
     public String insMemberInfo(@RequestBody memberDto member) {
-		String reulstCode = "";
-		System.out.println("test="+ member);
-		reulstCode = MemberService.insMember(member);
-		
-        return reulstCode;
+		String reulst = "";
+
+		reulst = MemberService.insMember(member);
+        return reulst;
     }
 	
-	@PostMapping("getTest")
-    public String getMemberInfoTest() {
-        return "1";
+	//로그인 API
+	@PostMapping("getMemberInfo")
+    public String getMemberInfo(@RequestBody memberDto member) {
+		String reulst = "";
+
+		reulst = MemberService.getMember(member);
+        return reulst;
     }
-	
-//	@PostMapping("insInfo")
-//	public String insMemberInfo() {
-//		String resultCode = memberRepository.save();
-//        return resultCode;
-//    }
+	 
+
 
 }
 
