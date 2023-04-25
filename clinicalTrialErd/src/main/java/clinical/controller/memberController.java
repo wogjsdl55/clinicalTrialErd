@@ -1,5 +1,6 @@
 package clinical.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,20 +22,20 @@ public class memberController {
 	
 	//회원가입 API
 	@PostMapping("insMemberInfo")
-    public String insMemberInfo(@RequestBody memberDto member) {
-		String reulst = "";
+    public Map<String, String> insMemberInfo(@RequestBody memberDto member) {
+		Map<String, String> result = new HashMap<>();
 
-		reulst = MemberService.insMember(member);
-        return reulst;
+		result = MemberService.insMember(member);
+        return result;
     }
 	
 	//로그인 API
 	@PostMapping("getMemberInfo")
-    public String getMemberInfo(@RequestBody memberDto member) {
-		String reulst = "";
+    public Map<String, String> getMemberInfo(@RequestBody memberDto member) {
+		Map<String, String> result = new HashMap<>();
 
-		reulst = MemberService.getMember(member);
-        return reulst;
+		result = MemberService.getMember(member);
+        return result;
     }
 	 
 

@@ -1,5 +1,6 @@
 package clinical;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -15,5 +16,6 @@ public class springConfig implements WebMvcConfigurer {
 		.allowedMethods("GET", "POST")
 	    .allowedOrigins("http://localhost:8080", "http://localhost:8081");
 	}
-	 
+	
+
 }
