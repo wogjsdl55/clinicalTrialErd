@@ -26,7 +26,7 @@
                     label="패스워드"
                     id="password"
                     :rules="[rules.required]"
-                    v-model="password"
+                    v-model="userPassword"
                     :error="error"
                     @click:append="hidePassword = !hidePassword"/>
                 </v-form>
@@ -60,7 +60,7 @@ export default {
     return {
       loading: false,
       userEmail: '',
-      password: '12',
+      userPassword: '',
       hidePassword: true,
       error: false,
       showResult: false,
@@ -81,13 +81,35 @@ export default {
 
         return;
       }
-      if (!vm.password) {  
+      if (!vm.userPassword) {  
         vm.result = "패스워드가 입력되지 않았습니다.";
         vm.showResult = true;
 
         return;
       }
 
+      //axios 통신으로 spring에 데이터 전달
+      vm.$axios.post('http://localhost:8080/member/getMemberInfo', {
+          headers : {"Content-Type" : "application/json"},
+          user_email: vm.userEmail
+          , user_pwd: vm.userPassword
+        })
+        .then(function(response) {
+          //에러발생
+          if(response.data == 0){
+            alert("오류가 발생하였습니다.");
+          //정상 로그인
+          }else if(response.data == 1){
+            vm.$store.dispatch('setToken', token)
+            vm.$router.push({ name: 'Dashboard' });
+          //기타 메세지
+          }else{
+            alert(response.data);
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 }

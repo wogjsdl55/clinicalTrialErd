@@ -13,6 +13,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './styles/global.css';
 
 import axios from 'axios'
+import store from './store'
 import VueChartkick from 'vue-chartkick';
 import Chart from 'chart.js';
 import fullCalendar from 'vue-fullcalendar';
@@ -41,6 +42,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   i18n,
   components: { App },
   template: '<App/>',

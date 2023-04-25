@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import clinical.common.common;
 import clinical.data.memberDto;
 import clinical.data.memberEntity;
 import clinical.repository.memberRepository;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class memberService {
 
 	@Autowired memberRepository MemberRepository;
+	@Autowired common Common;
 	
 	/*
 	 * 회원가입 API
@@ -32,7 +34,10 @@ public class memberService {
 	        if (!MemberRepository.findById(member.getUser_email()).isEmpty()) {
 	            return result ="이미 존재하는 이메일입니다.";
 	        }
-			
+
+	        //비밀번호 암호화
+	        memberE.setUser_pwd(Common.encryptor(member.getUser_pwd()));
+	        
 	        //데이터 insert
 			MemberRepository.save(memberE);
 			result ="회원가입이 완료되었습니다.";
@@ -58,13 +63,12 @@ public class memberService {
 			//입력한 메일로 db에 select
 			Optional<memberEntity> userInfo = MemberRepository.findById(member.getUser_email());
 			if (userInfo != null && !userInfo.isEmpty()) {				
-				String userPwdInfo = userInfo.get().getUser_pwd().toString();
+				String userPwdInfo = Common.decrypt(userInfo.get().getUser_pwd()).toString();
 
 				//비밀번호 체크
 				if (!userPwdInfo.equals(member.getUser_pwd())) {
 					return result ="입력하신 비밀번호가 일치하지 않습니다.";
 				}
-							
 				 
 				result = "1";
 	        }else {
