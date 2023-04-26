@@ -7,7 +7,7 @@
         <img src="static/logo.png" width="36px" />
       </router-link>
       <router-link :to="{ name: 'Dashboard' }" class="text">
-         Vue Admin Template
+         Admin
       </router-link>
     </v-toolbar>
     <v-list>

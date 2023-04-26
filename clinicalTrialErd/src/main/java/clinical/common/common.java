@@ -90,7 +90,7 @@ public class common {
                 .compact(); // 토큰 생성
 
 
-        System.out.println(">> jwt : " + jwt);
+        //System.out.println(">> jwt : " + jwt);
 		return jwt;
 	}
 }

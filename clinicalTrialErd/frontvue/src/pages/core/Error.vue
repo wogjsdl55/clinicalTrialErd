@@ -4,7 +4,7 @@
         <v-layout align-center justify-center row>
           <div class="text-md-center">
             <h1 class="errorCode">{{ $route.params.errorCode }}</h1>
-            <h2 class="my-3 headline ">Sorry, the server is down.</h2>
+            <h2 class="my-3 headline ">잘못된 페이지 입니다.</h2>
             <div>
               <v-btn color="secondary" @click="$router.push({ name: 'Dashboard' })">Go To Dashboard</v-btn>
             </div>

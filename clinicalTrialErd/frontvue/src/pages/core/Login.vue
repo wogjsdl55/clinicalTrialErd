@@ -95,16 +95,18 @@ export default {
           , user_pwd: vm.userPassword
         })
         .then(function(response) {
+          //0:실패, 1: 성공, 99:에러
           //에러발생
-          if(response.data == 0){
-            alert("오류가 발생하였습니다.");
+          if(response.data.resultCode == 99){
+            alert("오류가 발생하였습니다."+ response.data.resultMsg);
           //정상 로그인
-          }else if(response.data == 1){
-            vm.$store.dispatch('setToken', token)
+          }else if(response.data.resultCode == 1){
+            //토큰 store에 저장
+            vm.$store.dispatch('setToken', response.data.accessToken)
             vm.$router.push({ name: 'Dashboard' });
           //기타 메세지
           }else{
-            alert(response.data);
+            alert(response.data.resultMsg);
           }
         })
         .catch(function(error) {

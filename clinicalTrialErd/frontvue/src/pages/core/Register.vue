@@ -113,10 +113,14 @@
           , user_email: vm.userEmail
         })
         .then(function(response) {
-          if(response.data != 0){
-            alert(response.data);
+          //0:실패, 1: 성공, 99:에러
+          if(response.data.resultCode == 0){
+            alert(response.data.resultMsg);
+          }else if(response.data.resultCode == 1){
+            alert(response.data.resultMsg);
+            vm.$router.push({ name: 'Login' });
           }else{
-            alert('오류가 발생하였습니다.' + response.data);
+            alert('오류가 발생하였습니다.' + response.data.resultMsg);
           }
         })
         .catch(function(error) {

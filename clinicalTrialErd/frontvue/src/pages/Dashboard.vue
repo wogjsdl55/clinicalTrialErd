@@ -46,11 +46,19 @@
 
 <script>
 export default {
+  
   data() {
-    return {
+    return {   
       lorem: `Lorem ipsum dolor sit amet, mel at clita quando.`
     }
-  }
+  },
+  created() {
+    const vm = this;
+    //토큰 확인
+    if(vm.$store.getters.isLogin == false){
+      //vm.$router.push({ name: 'Login' });
+    }
+  },
 }
 </script>
 
