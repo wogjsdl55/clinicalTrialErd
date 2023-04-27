@@ -2,101 +2,63 @@
   <v-data-table
     class="table"
     :headers="headers"
-    :items="users"
+    :items="itmes"
     :rows-per-page-items="[10, 25]">
     <template slot="items" slot-scope="props">
-      <td class="text-xs-left">
-        <v-avatar size="42">
-          <img :src="randomAvatar()" alt="avatar">
-        </v-avatar>
-      </td>
-      <td class="text-xs-left">{{ props.item.name }}</td>
-      <td class="text-xs-left">{{ props.item.username }}</td>
-      <td class="text-xs-left">{{ props.item.email }}</td>
-      <td class="text-xs-left">{{ props.item.phone }}</td>
-      <td class="text-xs-left">{{ props.item.company.name }}</td>
-      <td class="text-xs-left">{{ props.item.website }}</td>
+      <td class="text-xs-left">{{ props.item.APPLY_ENTP_NAME }}</td>
+      <td class="text-xs-left">{{ props.item.APPROVAL_TIME.substring(0,10) }}</td>
+      <td class="text-xs-left">{{ props.item.GOODS_NAME }}</td>
+      <td class="text-xs-left">{{ props.item.CLINIC_EXAM_TITLE.substring(0,100) +'...' }}</td>
+      <td class="text-xs-left">{{ props.item.CLINIC_STEP_NAME }}</td>
       <!-- <td class="text-xs-left">{{ props.item.address.city }}</td> -->
     </template>
   </v-data-table>
 </template>
 
 <script>
-
-const avatars = [
-  'https://avataaars.io/?accessoriesType=Blank&avatarStyle=Circle&clotheColor=PastelGreen&clotheType=ShirtScoopNeck&eyeType=Wink&eyebrowType=UnibrowNatural&facialHairColor=Black&facialHairType=MoustacheMagnum&hairColor=Platinum&mouthType=Concerned&skinColor=Tanned&topType=Turban',
-  'https://avataaars.io/?accessoriesType=Sunglasses&avatarStyle=Circle&clotheColor=Gray02&clotheType=ShirtScoopNeck&eyeType=EyeRoll&eyebrowType=RaisedExcited&facialHairColor=Red&facialHairType=BeardMagestic&hairColor=Red&hatColor=White&mouthType=Twinkle&skinColor=DarkBrown&topType=LongHairBun',
-  'https://avataaars.io/?accessoriesType=Prescription02&avatarStyle=Circle&clotheColor=Black&clotheType=ShirtVNeck&eyeType=Surprised&eyebrowType=Angry&facialHairColor=Blonde&facialHairType=Blank&hairColor=Blonde&hatColor=PastelOrange&mouthType=Smile&skinColor=Black&topType=LongHairNotTooLong',
-  'https://avataaars.io/?accessoriesType=Round&avatarStyle=Circle&clotheColor=PastelOrange&clotheType=Overall&eyeType=Close&eyebrowType=AngryNatural&facialHairColor=Blonde&facialHairType=Blank&graphicType=Pizza&hairColor=Black&hatColor=PastelBlue&mouthType=Serious&skinColor=Light&topType=LongHairBigHair',
-  'https://avataaars.io/?accessoriesType=Kurt&avatarStyle=Circle&clotheColor=Gray01&clotheType=BlazerShirt&eyeType=Surprised&eyebrowType=Default&facialHairColor=Red&facialHairType=Blank&graphicType=Selena&hairColor=Red&hatColor=Blue02&mouthType=Twinkle&skinColor=Pale&topType=LongHairCurly',
-  'https://avataaars.io/?'
-];
-
 export default {
   data() {
     return {
-      users: [],
+      itmes: [],
       headers: [
-        {
-          value: 'Avatar',
-          align: 'left',
-          sortable: false
-        },
-        {
-          text: 'Name',
-          value: 'Name',
-          align: 'left',
-          sortable: true
-        },
-        {
-          text: 'User Name',
-          value: 'Username',
-          align: 'left',
-          sortable: true
-        },
-        {
-          text: 'Email',
-          value: 'Email',
-          align: 'left',
-          sortable: true
-        },
-        {
-          text: 'Phone',
-          value: 'Phone',
-          align: 'left',
-          sortable: true
-        },
-        {
-          text: 'Company',
-          value: 'Company',
-          align: 'left',
-          sortable: true
-        },
-        {
-          text: 'Website',
-          value: 'Website',
-          align: 'left',
-          sortable: true
-        }
+        { text: '신청자', width:150,  value: 'APPLY_ENTP_NAME',   align: 'left', sortable: false },
+        { text: '승인일', width:150,   value: 'APPROVAL_TIME',     align: 'left', sortable: true  },
+        { text: '제품명',   value: 'GOODS_NAME',        align: 'left', sortable: false },
+        { text: '시험제목', value: 'CLINIC_EXAM_TITLE', align: 'left', sortable: true},
+        { text: '단계',   width:10,  value: 'CLINIC_STEP_NAME',  align: 'left', sortable: true},
       ]
     }
   },
 
   methods: {
-    randomAvatar () {
-
-      return avatars[Math.floor(Math.random() * avatars.length)];
-    }
+   
   },
 
   created() {
     const vm = this;
+    const pageNo = "1";
+    
+    //axios 통신으로 spring에 데이터 가져오기
+    vm.$axios.get('http://localhost:8080/bioInfo/getInfo?pageNo='+ pageNo, {
+    headers : {"Content-Type" : "application/json"},
+    })
+    .then(function(response) {
+      //0:실패, 1: 성공, 99:에러
+      if(response.data.resultCode == 1){
+        if(response.data.statusCode != 200){
+          vm.$router.push({ name: 'Error', params: { errorCode: response.data.statusCode } });
+        }
 
-    // vm.axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
-    //   var result = response && response.data;
+        // eval 함수를 사용하면, 문자열을 넣어도 코드로 인식하게된다
+        vm.itmes = eval(response.data.items);
 
-    //   vm.users = result;
-    // });
+      }else{
+        alert('오류가 발생하였습니다.' + response.data.resultMsg);
+      }
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   }
 }
 </script>

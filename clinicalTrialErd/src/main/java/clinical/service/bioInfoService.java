@@ -10,11 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import clinical.common.common;
 import clinical.data.bioInfoDto;
@@ -39,7 +42,7 @@ public class bioInfoService {
         try {
         	String url = "http://apis.data.go.kr/1471000/MdcinClincTestInfoService01/getMdcinClincTestInfoList01?";
         	String serviceKey = "rqlGv54I/NdoOyDHmtZlkuRcaIaFgVs9Y57aOqSoe3uoYiSyogVGIn6JyGJVELIyc89cY8zkfnKXVgg9IUGrmQ==";
-        	String numOfRows = "1";
+        	String numOfRows = "100";
         	String type = "json";
         	
         	url = url + "serviceKey="+ serviceKey +"&numOfRows=" + numOfRows +"&pageNo="+ pageNo + "&type=" + type;  
@@ -49,22 +52,27 @@ public class bioInfoService {
         	
         	//header 설정을 위해 HttpHeader 클래스를 생성한 후 HttpEntity 객체에 넣어줍니다.
             HttpHeaders header = new HttpHeaders();
-
+            header.setContentType(MediaType.APPLICATION_JSON);
+            
             HttpEntity<?> entity = new HttpEntity<>(header);
             UriComponents uri = UriComponentsBuilder.fromHttpUrl(url).build();
 
             ResponseEntity<?> resultMap = restTemplate.exchange(uri.toString(), HttpMethod.GET, entity, Object.class);
-            bodyData = (Map<String, Object>) resultMap.getBody();
+            bodyData =(Map<String, Object>) ((Map<String, Object>) resultMap.getBody()).get("body");
             
             result.put("statusCode", Integer.toString(resultMap.getStatusCodeValue())); //http status code를 확인
             //result.put("header", resultMap.getHeaders().toString()); //헤더 정보 확인
-            result.put("body", bodyData.get("body").toString()); //실제 데이터 정보 확인
+            
+          //데이터를 제대로 전달 받았는지 확인 string형태로 파싱해줌
+            ObjectMapper mapper = new ObjectMapper();
+            
+            result.put("totalCount", bodyData.get("totalCount").toString()); //실제 데이터 정보 확인
+            result.put("items", mapper.writeValueAsString(bodyData.get("items")));
             result.put("resultCode", "1"); //실제 데이터 정보 확인
             
-            System.out.println(bodyData.get("body"));
         } catch (Exception e) {
         	result.put("resultCode", "99"); //실제 데이터 정보 확인
-        	result.put("resultMsg", e.toString()); //실제 데이터 정보 확인
+        	result.put("resultMsg", bodyData.get("items").toString()); //실제 데이터 정보 확인
             e.printStackTrace();
         }
 
