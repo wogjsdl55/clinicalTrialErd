@@ -4,7 +4,11 @@
   "calendar": "Calendar",
   "mailbox": "Mailbox",
   "widgets": "Widgets",
-  "social": "Social",
+  
+  "vist": "vist",
+  "investigation": "investigation",
+  "administration": "administration",
+
   "charts": "Charts",
   "media": "Media",
   "overlays": "Overlays",
@@ -19,5 +23,6 @@
   "widgetHigherYesterday": "{0} higher yesterday",
   "widgetBeforeTax": "{0} before tax",
   "widgetAverageDuration": "{0} average duration",
-  "widgetAverageTime": "{0}  on average time"
+  "widgetAverageTime": "{0}  on average time",
+  "V1": "V1(SCN)"
 }

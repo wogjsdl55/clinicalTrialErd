@@ -4,7 +4,11 @@
     "calendar": "Takvim",
     "mailbox": "Mail",
     "widgets": "Araçlar",
-    "social": "Sosyal",
+    
+    "vist": "vist",
+    "investigation": "investigation",
+    "administration": "administration",
+
     "charts": "Grafikler",
     "media": "Medya",
     "overlays": "Ekran Ayarları",
@@ -19,6 +23,7 @@
     "widgetHigherYesterday": "dün {0} daha yüksek",
     "widgetBeforeTax": "{0} vergi öncesi",
     "widgetAverageDuration": "{0} ortalama süre",
-    "widgetAverageTime": "{0} ortalama süre"
+    "widgetAverageTime": "{0} ortalama süre",
+    "V1": "V1(SCN)"
 }
   

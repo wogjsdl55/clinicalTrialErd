@@ -4,13 +4,18 @@
     "calendar": "カレンダー",
     "mailbox": "メールボックス",
     "widgets": "ウィジェット",
-    "social": "ソーシャル",
+    
+    "vist": "vist",
+    "investigation": "investigation",
+    "administration": "administration",
+
     "charts": "チャート",
     "media": "メディア",
     "overlays": "オーバーレイ",
     "snackbar": "スナックバー",
     "authorization": "認可",
     "login": "ログインする",
-    "users": "ユーザー"
+    "users": "ユーザー",
+    "V1": "V1(SCN)"
 }
   

@@ -11,6 +11,10 @@ import Calendar from '../pages/Calendar.vue';
 import Login from '../pages/core/Login.vue';
 import Error from '../pages/core/Error.vue';
 import Register from '../pages/core/Register.vue';
+import Vist from '../pages/vist.vue';
+import Investigation from '../pages/investigation.vue';
+import Administration from '../pages/administration.vue';
+
 
 
 Vue.use(Router);
@@ -83,18 +87,40 @@ export default new Router({
       }
     },
     {
-      path: '/chart',
-      name: 'Chart',
-      component: Chart,
+      path: '/vist',
+      name: 'Vist',
+      component: Vist,
       meta: {
         breadcrumb: [
-          { name: 'dashboard', href: 'Dashboard' },
-          { name: 'charts' }
+          { name: 'v1', href: 'V1' },
+          { name: 'vist' }
         ]
       }
     },
     {
-      path: '/',
+      path: '/investigation',
+      name: 'Investigation',
+      component: Investigation,
+      meta: {
+        breadcrumb: [
+          { name: 'v1', href: 'V1' },
+          { name: 'investigation' }
+        ]
+      }
+    },
+    {
+      path: '/administration',
+      name: 'Administration',
+      component: Administration,
+      meta: {
+        breadcrumb: [
+          { name: 'v1', href: 'V1' },
+          { name: 'administration' }
+        ]
+      }
+    },
+    {
+      path: '/login',
       name: 'Login',
       component: Login,
       meta: {
