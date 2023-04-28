@@ -17,8 +17,7 @@ import clinical.service.memberService;
 @RequestMapping("/member")
 public class memberController {
 	
-	@Autowired
-	memberService MemberService;
+	@Autowired memberService MemberService;
 	
 	//회원가입 API
 	@PostMapping("insMemberInfo")

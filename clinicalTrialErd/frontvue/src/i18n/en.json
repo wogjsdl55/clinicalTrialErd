@@ -1,11 +1,11 @@
 {
-  "dashboard": "Dashboard",
+  "dashboard": "HOME",
   "search": "Search",
   "calendar": "Calendar",
   "mailbox": "Mailbox",
   "widgets": "Widgets",
   
-  "vist": "vist",
+  "visit": "visit",
   "investigation": "investigation",
   "administration": "administration",
 

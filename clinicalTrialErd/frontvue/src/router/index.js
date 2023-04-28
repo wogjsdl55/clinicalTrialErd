@@ -11,15 +11,16 @@ import Calendar from '../pages/Calendar.vue';
 import Login from '../pages/core/Login.vue';
 import Error from '../pages/core/Error.vue';
 import Register from '../pages/core/Register.vue';
-import Vist from '../pages/vist.vue';
-import Investigation from '../pages/investigation.vue';
-import Administration from '../pages/administration.vue';
+import Visit from '../pages/Visit.vue';
+import Investigation from '../pages/Investigation.vue';
+import Administration from '../pages/Administration.vue';
 
 
 
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/dashboard',
@@ -87,13 +88,13 @@ export default new Router({
       }
     },
     {
-      path: '/vist',
-      name: 'Vist',
-      component: Vist,
+      path: '/visit',
+      name: 'Visit',
+      component: Visit,
       meta: {
         breadcrumb: [
           { name: 'v1', href: 'V1' },
-          { name: 'vist' }
+          { name: 'visit' }
         ]
       }
     },
@@ -120,7 +121,7 @@ export default new Router({
       }
     },
     {
-      path: '/login',
+      path: '/',
       name: 'Login',
       component: Login,
       meta: {
@@ -139,6 +140,9 @@ export default new Router({
       path: "*",
       name: "Error",
       component: Error,
+      meta: {
+        allowAnonymous: true
+      }
     },
     {
       path: '/register',

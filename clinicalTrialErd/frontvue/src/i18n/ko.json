@@ -1,11 +1,11 @@
 {
-  "dashboard": "대쉬보드",
+  "dashboard": "홈",
   "search": "검색",
   "calendar": "달력",
   "mailbox": "메일함",
   "widgets": "위젯",
 
-  "vist": "방문일",
+  "visit": "방문일",
   "investigation": "인구학적 조사",
   "administration": "본제 투여 현황",
 

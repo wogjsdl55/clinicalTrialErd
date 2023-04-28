@@ -23,11 +23,11 @@
         <v-list-tile slot="activator">
           <v-list-tile-title class="item-title">{{ $t('V1') }}</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile @click="changeRoute('Vist', 4)">
+        <v-list-tile @click="changeRoute('Visit', 4)">
           <v-list-tile-action>
             <v-icon>group</v-icon>
           </v-list-tile-action>
-          <v-list-tile-title :class="[{'active': selectedIndex === 4}, 'item-title' ]">{{ $t('vist') }}</v-list-tile-title>
+          <v-list-tile-title :class="[{'active': selectedIndex === 4}, 'item-title' ]">{{ $t('visit') }}</v-list-tile-title>
         </v-list-tile>
         <v-list-tile @click="changeRoute('Investigation', 5)">
           <v-list-tile-action>

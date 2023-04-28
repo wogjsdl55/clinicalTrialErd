@@ -1,10 +1,7 @@
 package clinical.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -20,14 +17,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import clinical.common.common;
-import clinical.data.bioInfoDto;
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
 
 @Service
 public class bioInfoService {
 
-	//@Autowired memberRepository MemberRepository;
 	@Autowired common Common;
 	
 	/*
@@ -72,8 +66,7 @@ public class bioInfoService {
             
         } catch (Exception e) {
         	result.put("resultCode", "99"); //실제 데이터 정보 확인
-        	result.put("resultMsg", bodyData.get("items").toString()); //실제 데이터 정보 확인
-            e.printStackTrace();
+        	result.put("resultMsg", e.getMessage()); //실제 데이터 정보 확인
         }
 
         return result;

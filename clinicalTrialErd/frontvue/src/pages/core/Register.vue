@@ -45,7 +45,7 @@
                 <v-card-text>
                   <h6 class="text-h6 text-muted font-weight-medium d-flex justify-center align-center mt-3">
                         이미 계정이 있으십니까?
-                      <RouterLink to="/login" class="text-primary text-decoration-none text-body-1 opacity-1 font-weight-medium pl-2">로그인</RouterLink>
+                      <RouterLink to="/" class="text-primary text-decoration-none text-body-1 opacity-1 font-weight-medium pl-2">로그인</RouterLink>
                   </h6>
                 </v-card-text>
               </v-card>

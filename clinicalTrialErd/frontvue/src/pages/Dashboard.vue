@@ -10,7 +10,7 @@
         <time-line />
       </v-flex>
       <!-- DataTable&TimeLine Ends -->
-      
+
       <!-- Widgets-->
       <v-flex d-flex lg3 sm6 xs12>
         <widget icon="domain" title="1,287,687" :subTitle="$t('widgetHigherYesterday', ['13%'])" :supTitle="$t('widgetTodaysVisit')" color="#00b297"/>
@@ -58,7 +58,7 @@ export default {
     const vm = this;
     //토큰 확인
     if(vm.$store.getters.isLogin == false){
-      //vm.$router.push({ name: 'Login' });
+      vm.$router.push({ name: 'Login' });
     }
   },
 }

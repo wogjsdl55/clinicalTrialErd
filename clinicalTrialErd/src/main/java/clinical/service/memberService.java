@@ -49,7 +49,7 @@ public class memberService {
 			result.put("resultMsg", "회원가입이 완료되었습니다.");
 		} catch (Exception e) {
 			result.put("resultCode",  "99");
-			result.put("resultMsg",  e.toString());
+			result.put("resultMsg",  e.getMessage());
 		}
 
 		return result; 
@@ -65,9 +65,6 @@ public class memberService {
 		Map<String, String> result = new HashMap<>();
 		String accessToken ="";
 		try {
-			//Dto -> Entity로 변환
-			memberEntity memberE = member.toEntity();
-			
 			//입력한 메일로 db에 select
 			Optional<memberEntity> userInfo = MemberRepository.findById(member.getUser_email());
 			if (userInfo != null && !userInfo.isEmpty()) {				
@@ -93,7 +90,7 @@ public class memberService {
 
 		} catch (Exception e) {
 			result.put("resultCode",  "99");
-			result.put("resultMsg",  e.toString());
+			result.put("resultMsg",  e.getMessage());
 		}
 
 		return result; 
