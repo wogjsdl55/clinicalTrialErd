@@ -29,6 +29,18 @@ public class pageSettingDto {
 		this.page_type_05 = page_type_05;
 	}
 	
+	//entity -> dto
+	public pageSettingDto pageSettingToDto(pageSettingEntity page) {
+		return pageSettingDto.builder()
+                .page_name(page.getPage_name())
+                .page_type_01(page.getPage_type_01())
+                .page_type_02(page.getPage_type_02())
+                .page_type_03(page.getPage_type_03())
+                .page_type_04(page.getPage_type_04())
+                .page_type_05(page.getPage_type_05())
+                .build();
+	}
+	
 //	public pageSettingEntity toEntity() {
 //		pageSettingEntity pageSetting = pageSettingEntity.builder()
 //				.page_name(page_name)
