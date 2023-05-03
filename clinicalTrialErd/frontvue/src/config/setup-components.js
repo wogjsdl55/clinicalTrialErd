@@ -15,6 +15,9 @@ import LocationStatistic from '../components/statistics/LocationStatistic.vue';
 import SiteViewStatistic from '../components/statistics/SiteViewStatistic.vue';
 import TotalEarningsStatistic from '../components/statistics/TotalEarningsStatistic.vue';
 
+//컴포넌트 type
+import DateType from '../components/type/dateType.vue';
+
 function setupComponents(Vue){
 
   Vue.component('toolbar', Toolbar);
@@ -31,6 +34,9 @@ function setupComponents(Vue){
   Vue.component('location-statistic', LocationStatistic);
   Vue.component('site-view-statistic', SiteViewStatistic);
   Vue.component('total-earnings-statistic', TotalEarningsStatistic);
+  
+  //db type에 따른 구성추가
+  Vue.component('dateType', DateType);
 }
 
 
