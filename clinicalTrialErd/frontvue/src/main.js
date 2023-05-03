@@ -17,8 +17,8 @@ import store from './store'
 import VueChartkick from 'vue-chartkick';
 import Chart from 'chart.js';
 import fullCalendar from 'vue-fullcalendar';
-import { setupComponents } from './config/setup-components';
 
+import { setupComponents } from './config/setup-components';
 import { setupAndGetI18n } from './config/setup-i18n';
 
 const i18n = setupAndGetI18n(Vue);

@@ -25,6 +25,7 @@ dependencies {
 	//postgresql 설치
 	implementation 'org.postgresql:postgresql'
 	implementation 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	
 	//jasypt 암호화 설치
 	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
