@@ -103,6 +103,7 @@ export default {
           }else if(response.data.resultCode == 1){
             //토큰 store에 저장
             vm.$store.dispatch('setToken', response.data.accessToken)
+            vm.$store.dispatch('user_email', vm.userEmail)
             vm.$router.push({ name: 'Dashboard' });
           //기타 메세지
           }else{

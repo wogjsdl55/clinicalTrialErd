@@ -26,6 +26,8 @@ const i18n = setupAndGetI18n(Vue);
 import swatches from 'vue-swatches';
 import "vue-swatches/dist/vue-swatches.min.css"
 
+// EventBus 생성
+Vue.prototype.$EventBus = new Vue()
 Vue.use(VueChartkick, { adapter: Chart });
 axios.defaults.baseURL = 'http://localhost:8080'
 Vue.prototype.$axios = axios

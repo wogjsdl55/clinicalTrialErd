@@ -17,6 +17,9 @@ import TotalEarningsStatistic from '../components/statistics/TotalEarningsStatis
 
 //type 종류
 import DateType from '../components/type/DateType.vue';
+import TextType from '../components/type/TextType.vue';
+import RadioType from '../components/type/RadioType.vue';
+import TimeType from '../components/type/TimeType.vue';
 
 function setupComponents(Vue){
 
@@ -35,7 +38,10 @@ function setupComponents(Vue){
   Vue.component('site-view-statistic', SiteViewStatistic);
   Vue.component('total-earnings-statistic', TotalEarningsStatistic);
 
-  Vue.component('date-type', DateType);
+  Vue.component('dateType', DateType);
+  Vue.component('textType', TextType);
+  Vue.component('radioType', RadioType);
+  Vue.component('timeType', TimeType);
 }
 
 

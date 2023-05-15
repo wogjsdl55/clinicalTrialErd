@@ -27,6 +27,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -61,6 +68,19 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="clinical.data" />
+      <recent name="clinical.repository" />
+      <recent name="clinical.service" />
+      <recent name="clinical.controller" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="dti" />
+    </option>
+  </component>
   <component name="RunManager" selected="Spring Boot.springApplication">
     <configuration name="springApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="clinical.springApplication" />
@@ -123,7 +143,7 @@
       <workItem from="1683074494547" duration="548000" />
       <workItem from="1683075054139" duration="544000" />
       <workItem from="1683075606017" duration="465000" />
-      <workItem from="1683076079908" duration="4819000" />
+      <workItem from="1683076079908" duration="90702000" />
     </task>
     <servers />
   </component>

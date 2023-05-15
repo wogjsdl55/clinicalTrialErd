@@ -1,97 +1,68 @@
 <template>
-    <v-container grid-list-xl fluid>
-        <v-layout row wrap>
-          <v-flex sm12>
-            <h4>Basic</h4>
-          </v-flex>
-          <v-flex lg3 sm12 v-for="(item,index) in users" :key=" 'mini' + index">
-            <social-widget
-              mini
-              v-bind="item">
-            </social-widget>
-          </v-flex>
-          <v-flex sm12>
-            <h4>Normal</h4>
-          </v-flex>
-          <v-flex lg3 sm12 v-for="(item,index) in users" :key=" 'basic' + index">
-            <social-widget v-bind="item">
-            </social-widget>
-          </v-flex>
-          <v-flex sm12>
-            <h4>Name Card with top nav</h4>
-          </v-flex>
-          <v-flex lg3 sm12 v-for="(item,index) in users" :key=" 'basic-top-nav' + index">
-            <social-widget
-              top-nav
-              v-bind="item">
-            </social-widget>
-          </v-flex>
-          <v-flex sm12>
-            <h4>Bottom Nav Name Card</h4>
-          </v-flex>
-          <v-flex lg3 sm12 v-for="(item,index) in users" :key=" 'bottom-nav' + index">
-            <social-widget
-              bottom-nav
-              v-bind="item">
-            </social-widget>
-          </v-flex>
-          <v-flex sm12>
-            <h4>Contact Card</h4>
-          </v-flex>
-          <!-- <v-flex lg4 sm12>
-            <profile-card></profile-card>
-          </v-flex> -->
-        </v-layout>
-      </v-container>
+  <v-container grid-list-xl fluid>
+    <v-card color="#f2f4f7"  height="55" class="font-weight-bold">
+        <v-card-text>인구학적 조사</v-card-text>
+    </v-card>
+          
+      <v-card  v-for="(data, index) in dataList" v-bind:key="data.group_type" :key="index">
+          <v-card color="#f2f4f7" height="auto" width="300" style="display: flex;"> 
+            <v-card-text >{{ data.group_etc1 }}</v-card-text>
+
+            <v-card width="0" >
+              <component  v-bind:is="data.group_type" />
+            </v-card>
+        </v-card>  
+      </v-card>
+
+      <v-btn
+        color="primary"
+        style="margin: 3rem; margin-left: 30rem;"
+        @click="saveButton"
+      >
+        저장
+      </v-btn>
+
+  </v-container>
 </template>
+
 
 <script>
 export default {
   data () {
     return {
-      users: [
-        {
-          jobTitle: 'Web Developer',
-          name: 'Michael Wang',
-          color: '#ba234b',
-          dark: true,
-          avatar: {
-            src: 'https://avataaars.io/?avatarStyle=Transparent&topType=WinterHat4&accessoriesType=Prescription01&hatColor=Black&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Black&graphicType=Selena&eyeType=Squint&eyebrowType=AngryNatural&mouthType=Default&skinColor=DarkBrown',
-            size: '36'
-          }
-        },
-        {
-          jobTitle: 'Web Designer',
-          name: 'Jessie J',
-          color: '#e57b09',
-          dark: true,
-          avatar: {
-            src: 'https://avataaars.io/?avatarStyle=Transparent&topType=WinterHat1&accessoriesType=Sunglasses&hatColor=Red&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light',
-            size: '36'
-          }
-        },
-        {
-          jobTitle: 'Web Developer',
-          name: 'Jim J',
-          color: 'teal',
-          dark: true,
-          avatar: {
-            src: 'https://avataaars.io/?avatarStyle=Transparent&topType=Hat&accessoriesType=Sunglasses&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Happy&eyebrowType=Default&mouthType=Default&skinColor=Light',
-            size: '36'
-          },
-        },
-        {
-          jobTitle: 'Product Manager',
-          name: 'John Doe',
-          color: '#a51288',
-          dark: true,
-          cardBgImage: '/static/bg/15.jpg',
-          avatar: {
-            src: 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairSides&accessoriesType=Blank&hairColor=BrownDark&facialHairType=BeardMedium&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Gray01&eyeType=WinkWacky&eyebrowType=SadConcerned&mouthType=ScreamOpen&skinColor=Brown',
-            size: '36'
-          },
-        },
-      ]
+      items: [],
+      dataList: {},
+    }
+  },
+
+  created() {
+    const vm = this;
+    
+    //axios 통신으로 spring에 데이터 가져오기
+    vm.$axios.post('http://localhost:8080/pageSetting/getInfo', {
+    headers : {"Content-Type" : "application/json"},
+      //페이지명 설정
+      group_name: 'Investigation'
+    })
+    .then(function(response) {
+      //0:실패, 1: 성공, 99:에러
+      if(response.data.resultCode == 1){
+
+        // eval 함수를 사용하면, 문자열을 넣어도 코드로 인식하게된다
+        const data= '['+ response.data.data + ']';
+        vm.items = eval(data);
+        vm.dataList = eval(vm.items[0].dataList)
+
+      }else{
+        alert('오류가 발생하였습니다.' + response.data.resultMsg);
+      }
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  },
+  methods: {
+    saveButton(){
     }
   }
 }

@@ -5,7 +5,7 @@ import Dashboard from '../pages/Dashboard.vue';
 import Social from '../pages/Social.vue';
 import Media from '../pages/Media.vue';
 import Snackbar from '../pages/Snackbar.vue';
-import Chart from '../pages/Chart.vue';
+
 import Mailbox from '../pages/Mailbox.vue';
 import Calendar from '../pages/Calendar.vue';
 import Login from '../pages/core/Login.vue';

@@ -16,7 +16,6 @@ import clinical.service.pageSettingService;
 @RequestMapping("/pageSetting")
 public class pageSettingController {
 	
-	
 	@Autowired pageSettingService PageSettingService;
 	
 	//페이지 구성 항목 조회
@@ -27,4 +26,5 @@ public class pageSettingController {
 		result = PageSettingService.getPageSetting(pageSetting);
         return result;
     }
+
 }

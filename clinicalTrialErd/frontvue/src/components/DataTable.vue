@@ -48,7 +48,6 @@ export default {
         if(response.data.statusCode != 200){
           vm.$router.push({ name: 'Error', params: { errorCode: response.data.statusCode } });
         }
-
         // eval 함수를 사용하면, 문자열을 넣어도 코드로 인식하게된다
         vm.itmes = eval(response.data.items);
 
