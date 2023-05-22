@@ -10,7 +10,6 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "pageSettingEntity")
 @Table(name = "group_detail")
 @EntityListeners(AuditingEntityListener.class)
 public class pageSettingDetailEntity {
@@ -25,6 +24,7 @@ public class pageSettingDetailEntity {
     @JoinColumn(name = "group_name")
     private pageSettingEntity PageSettingEntity;
 
+    @Id
     @OneToOne
     @JoinColumn(name = "etc1")
     private pageSettingValueEntity PageSettingValueEntity;

@@ -15,6 +15,8 @@ import LocationStatistic from '../components/statistics/LocationStatistic.vue';
 import SiteViewStatistic from '../components/statistics/SiteViewStatistic.vue';
 import TotalEarningsStatistic from '../components/statistics/TotalEarningsStatistic.vue';
 
+//버튼 종류
+import DeleteButton from '../components/button/deleteButton';
 //type 종류
 import DateType from '../components/type/DateType.vue';
 import TextType from '../components/type/TextType.vue';
@@ -42,6 +44,8 @@ function setupComponents(Vue){
   Vue.component('textType', TextType);
   Vue.component('radioType', RadioType);
   Vue.component('timeType', TimeType);
+
+  Vue.component('deleteButton', DeleteButton);
 }
 
 

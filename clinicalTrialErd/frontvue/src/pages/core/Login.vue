@@ -89,7 +89,7 @@ export default {
       }
 
       //axios 통신으로 spring에 데이터 전달
-      vm.$axios.post('http://localhost:8080/member/getMemberInfo', {
+      vm.$axios.post('/member/getMemberInfo', {
           headers : {"Content-Type" : "application/json"},
           user_email: vm.userEmail
           , user_pwd: vm.userPassword

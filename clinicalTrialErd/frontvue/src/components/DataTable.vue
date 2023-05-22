@@ -39,7 +39,7 @@ export default {
     const pageNo = "1";
     
     //axios 통신으로 spring에 데이터 가져오기
-    vm.$axios.get('http://localhost:8080/bioInfo/getInfo?pageNo='+ pageNo, {
+    vm.$axios.get('/bioInfo/getInfo?pageNo='+ pageNo, {
     headers : {"Content-Type" : "application/json"},
     })
     .then(function(response) {

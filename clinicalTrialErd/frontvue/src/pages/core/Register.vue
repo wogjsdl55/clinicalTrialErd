@@ -106,7 +106,7 @@
           return;
         }
         //axios 통신으로 spring에 데이터 전달
-        vm.$axios.post('http://localhost:8080/member/insMemberInfo', {
+        vm.$axios.post('/member/insMemberInfo', {
           headers : {"Content-Type" : "application/json"},
 		      user_name: vm.userName
           , user_pwd: vm.userPassword

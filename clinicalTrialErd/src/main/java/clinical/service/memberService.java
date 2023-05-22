@@ -78,8 +78,8 @@ public class memberService {
 				}
 				
 				//로그인시 토큰 값 생성 후 전달
-				accessToken = Common.createToken(); 
-				result.put("accessToken",  accessToken);
+				accessToken = Common.createToken(member.getUser_email());
+				result.put("accessToken", accessToken);
 				result.put("resultCode",  "1");
 	        }else {
 	        	//이메일 체크

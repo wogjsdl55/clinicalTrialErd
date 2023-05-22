@@ -1,24 +1,43 @@
 <template>
+    <div>
     <v-radio-group
-    
     inline
-    style="margin: 10px;"
+    style="outline: solid; margin: 10px; width: 47rem;"
+    v-model="item"
+    v-bind="item"
     >
-    <v-radio label="Option1" value="radio-1" ></v-radio>
-    <v-radio label="Option2" value="radio-2" ></v-radio>
-</v-radio-group>
+        <v-radio name="radio" v-for="(resultsEtc, index) in resultsEtcs" v-bind:key="index" :label=resultsEtcs[index] :value="resultsEtcs[index]" ></v-radio>
+    </v-radio-group>
+    
+    </div>
 </template>
 
 
 
 <script>
     export default {
-    data() {
+    props: ["results"],
+    data () {
         return {
-            column: null,
-            inline: null,      
+            item: [],
+            dataCheck: [],
+            resultsEtc1: this.results.group_etc1,
+            resultsEtcs: eval(this.results.group_etc),
         }
     },
+    created(){
+        const vm = this;
+        vm.item = vm.results.group_data;
+    },
+    updated(){ 
+        //this.item = this.results.group_data;
+        this.dataCheck[0] = this.resultsEtc1;
+        this.dataCheck[1] = this.item;
+
+        this.$emit('dataCheck', this.dataCheck);
+    },
+    methods:{ 
+    }
 
   }
 </script>

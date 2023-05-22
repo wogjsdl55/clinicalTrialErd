@@ -44,6 +44,7 @@
     </v-list-group>
 
 
+      <!--
       <v-list-tile @click="changeRoute('Calendar', 2)">
         <v-list-tile-action>
           <v-icon>calendar_today</v-icon>
@@ -57,7 +58,7 @@
         </v-list-tile-action>
         <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('mailbox') }}</v-list-tile-title>
       </v-list-tile>
-
+      -->
       <!--
       <v-list-group
         prepend-icon="pageview">

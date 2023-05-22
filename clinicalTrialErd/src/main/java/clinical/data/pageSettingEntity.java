@@ -3,6 +3,7 @@ package clinical.data;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.hibernate.annotations.Where;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AllArgsConstructor;
@@ -25,9 +26,10 @@ public class pageSettingEntity {
 	@Column(name ="group_name")
 	private String group_name;
 
-	private String seq;
+	private Integer seq;
 
 	@OneToMany(mappedBy = "PageSettingEntity", fetch = FetchType.EAGER)
+	@OrderBy("seq asc")
 	private List<pageSettingDetailEntity> PageSettingDetailEntity = new ArrayList<>();
 
 

@@ -2,6 +2,7 @@ package clinical.service;
 
 import java.util.*;
 
+import clinical.data.pageSettingDetailDto;
 import clinical.data.pageSettingDetailEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,13 @@ public class pageSettingService {
 		Map<String, String> result = new HashMap<>();
 		Map<String, String> data = new HashMap<>();
 		Map<String, String> dataGroup = new HashMap<>();
-		//데이터를 제대로 전달 받았는지 확인 string형태로 파싱해줌
+		List<String> dataEtc = new ArrayList<>();
+
+		//데이터를 제대로 전달 받았는지 확인 string 형태로 파싱해줌
 		ObjectMapper mapper = new ObjectMapper();
 
         try {
-        	//입력한 메일로 db에 select
+        	//페이지명으로 db에 select
 			pageSettingEntity pageInfo = PageSettingRepository.findById(pageSetting.getGroup_name()).get();
 
 			//detail
@@ -40,23 +43,32 @@ public class pageSettingService {
 
 				//entitiy -> dto
 				pageSetting = pageSetting.pageSettingToDto(pageInfo);
-
 				List<pageSettingDetailEntity> detail = pageSetting.getPageSettingDetailEntity();
-				for (pageSettingDetailEntity PageSettingDetailEntity : detail) {
+				for (pageSettingDetailEntity pageDetail : detail) {
 
-					System.out.println(PageSettingDetailEntity.getSeq());
-					//dataGroup.put("group_type", pageSetting.getPageSettingDetailEntity(). );
-//					dataGroup.put("group_etc1", pageSetting.getPageSettingDetailEntity().get(i).getEtc1());
-//					dataGroup.put("group_etc2", pageSetting.getPageSettingDetailEntity().get(i).getEtc2());
-//					dataGroup.put("group_etc3", pageSetting.getPageSettingDetailEntity().get(i).getEtc3());
-//					dataGroup.put("group_etc4", pageSetting.getPageSettingDetailEntity().get(i).getEtc4());
-//					dataGroup.put("group_etc5", pageSetting.getPageSettingDetailEntity().get(i).getEtc5());
+					dataGroup.put("group_type", pageDetail.getGroup_type() );
+					dataGroup.put("group_etc1", pageDetail.getPageSettingValueEntity().getEtc1());
+					dataGroup.put("group_data", "");
+
+					dataEtc.add(pageDetail.getPageSettingValueEntity().getEtc2());
+					dataEtc.add(pageDetail.getPageSettingValueEntity().getEtc3());
+					dataEtc.add(pageDetail.getPageSettingValueEntity().getEtc4());
+					dataEtc.add(pageDetail.getPageSettingValueEntity().getEtc5());
+					dataEtc.add(pageDetail.getPageSettingValueEntity().getEtc6());
+					dataEtc.add(pageDetail.getPageSettingValueEntity().getEtc7());
+					dataEtc.add(pageDetail.getPageSettingValueEntity().getEtc8());
+					dataEtc.add(pageDetail.getPageSettingValueEntity().getEtc9());
+
+					//null값 제거
+					while (dataEtc.remove(null));
+					dataGroup.put("group_etc", mapper.writeValueAsString(dataEtc));
+					dataGroup.put("group_type", pageDetail.getGroup_type() );
 
 					dataList.add(mapper.writeValueAsString(dataGroup));
-
+					dataEtc.clear();
 				}
 				data.put("dataList", dataList.toString());
-				data.put("seq", pageSetting.getSeq());
+				data.put("seq", pageSetting.getSeq().toString());
 				data.put("group_name", pageSetting.getGroup_name());
 
 				result.put("data", mapper.writeValueAsString(data) ); //실제 데이터 정보 확인
