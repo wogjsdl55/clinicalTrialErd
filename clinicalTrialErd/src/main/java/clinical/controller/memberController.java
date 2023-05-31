@@ -32,7 +32,6 @@ public class memberController {
 	@PostMapping("getMemberInfo")
     public Map<String, String> getMemberInfo(@RequestBody memberDto member) {
 		Map<String, String> result = new HashMap<>();
-
 		result = MemberService.getMember(member);
         return result;
     }

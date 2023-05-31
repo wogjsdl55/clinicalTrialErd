@@ -1,11 +1,13 @@
 package clinical.data;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
@@ -14,13 +16,14 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 public class scnAdministrationDto {
-	private String user_email;
+	private String userEmail;
+	private Integer seq;
 	private String injection_yn;
-	private Date injection_start_date;
+	private LocalDate injection_start_date;
 	private LocalTime injection_start_time;
-	private Date injection_end_date;
+	private LocalDate injection_end_date;
 	private LocalTime injection_end_time;
-	private Date injection_date;
+	private LocalDate injection_date;
 	private String unit;
 	private String injection_cnt;
 	private String route;
@@ -30,9 +33,10 @@ public class scnAdministrationDto {
 
 
 	@Builder
-	public scnAdministrationDto(String user_email, String injection_yn, Date injection_start_date, LocalTime injection_start_time, Date injection_end_date, LocalTime injection_end_time, Date injection_date, String unit,
+	public scnAdministrationDto(String userEmail, Integer seq, String injection_yn, LocalDate injection_start_date, LocalTime injection_start_time, LocalDate injection_end_date, LocalTime injection_end_time, LocalDate injection_date, String unit,
 								String injection_cnt, String route, String rate_change, String rate_reason, LocalDateTime regdate) {
-		this.user_email = user_email;
+		this.userEmail = userEmail;
+		this.seq = seq;
 		this.injection_yn = injection_yn;
 		this.injection_start_date = injection_start_date;
 		this.injection_start_time = injection_start_time;
@@ -50,7 +54,8 @@ public class scnAdministrationDto {
 	
 	public scnAdministrationEntity toEntity() {
 		scnAdministrationEntity administration = scnAdministrationEntity.builder()
-				.user_email(user_email)
+				.userEmail(userEmail)
+				.seq(seq)
 				.injection_yn(injection_yn)
 				.injection_start_date(injection_start_date)
 				.injection_start_time(injection_start_time)
@@ -70,7 +75,8 @@ public class scnAdministrationDto {
 	//entity -> dto
 	public scnAdministrationDto scnAdministrationToDto(scnAdministrationEntity administration) {
 		return scnAdministrationDto.builder()
-				.user_email(administration.getUser_email())
+				.userEmail(administration.getUserEmail())
+				.seq(administration.getSeq())
 				.injection_yn(administration.getInjection_yn())
 				.injection_start_date(administration.getInjection_start_date())
 				.injection_start_time(administration.getInjection_start_time())

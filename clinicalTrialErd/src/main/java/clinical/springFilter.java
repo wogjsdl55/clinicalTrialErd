@@ -5,28 +5,31 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.security.Key;
 
+@Component
 public class springFilter implements Filter {
-    private Logger log = LoggerFactory.getLogger(getClass());
-    private Key key;
+   private Logger log = LoggerFactory.getLogger(getClass());
+   private Key key;
 
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,  ServletException {
+   @Override
+   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,  ServletException {
 
-        System.out.println("test1");
         // 1. Request Header 에서 JWT 토큰 추출
-        String token = resolveToken((HttpServletRequest) request);
-
-        // 2. validateToken 으로 토큰 유효성 검사
-        byte[] keyBytes = Decoders.BASE64.decode(token);
-        this.key = Keys.hmacShaKeyFor(keyBytes);
+       String responset = String.valueOf(((HttpServletResponse) response));
+       String token = resolveToken((HttpServletRequest) request);
+       System.out.println("response="+ ( (HttpServletRequest) request).getHeader("vuex"));
+        //validateToken 으로 토큰 유효성 검사
+        // byte[] keyBytes = Decoders.BASE64.decode(token);
+        //this.key = Keys.hmacShaKeyFor(keyBytes);
 
         log.info("key="+ this.key);
         if (token != null && !"".equals(key) ) {
@@ -34,11 +37,13 @@ public class springFilter implements Filter {
             Authentication authentication = getAuthentication(token);
             //SecurityContextHolder.getContext().setAuthentication(authentication);
         }
+        chain.doFilter(request, response);
     }
 
     // Request Header 에서 토큰 정보 추출
     private String resolveToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader("Authorization");
+        String bearerToken = request.getHeader("host");
+        System.out.println("AccessToken="+ bearerToken);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer")) {
             return bearerToken.substring(7);
         }
@@ -93,4 +98,7 @@ public class springFilter implements Filter {
         }
         return false;
     }
+
+
+
 }

@@ -1,19 +1,17 @@
 package clinical.service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import clinical.common.common;
 import clinical.data.memberDto;
 import clinical.data.memberEntity;
 import clinical.repository.memberRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +36,6 @@ public class memberService {
 				result.put("resultMsg", "이미 존재하는 이메일입니다.");
 	            return result;
 	        }
-
 	        //비밀번호 암호화
 	        memberE.setUser_pwd(Common.encryptor(member.getUser_pwd()));
 	        
@@ -51,12 +48,9 @@ public class memberService {
 			result.put("resultCode",  "99");
 			result.put("resultMsg",  e.getMessage());
 		}
-
-		return result; 
-	
+		return result;
 	}
-	
-	
+
 	/*
 	 * 로그인 API
 	 */
@@ -86,14 +80,12 @@ public class memberService {
 	        	result.put("resultCode",  "0");
 	        	result.put("resultMsg",  "로그인 정보가 존재하지 않습니다"); 
 	        }
-			
 
 		} catch (Exception e) {
 			result.put("resultCode",  "99");
 			result.put("resultMsg",  e.getMessage());
 		}
 
-		return result; 
-	
+		return result;
 	}
 }

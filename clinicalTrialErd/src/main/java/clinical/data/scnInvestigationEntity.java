@@ -8,11 +8,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.sql.Time;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
 
 @Data
 @Entity
@@ -27,7 +25,7 @@ public class scnInvestigationEntity {
 	@Id
 	private String user_email;
 	private String age;
-	private Date birthday;
+	private LocalDate birthday;
 	private String ethnic;
 	private String gender;
 	private String races;

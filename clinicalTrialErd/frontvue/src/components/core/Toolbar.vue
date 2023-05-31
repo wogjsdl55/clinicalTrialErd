@@ -274,7 +274,7 @@ export default {
           title: 'Log Out',
           click: () => {
             const vm = this;
-
+            vm.$store.dispatch('setToken', null);
             vm.$router.push({ name: 'Login' });
           }
         }

@@ -36,7 +36,10 @@ public class pageSettingService {
 
         try {
         	//페이지명으로 db에 select
-			pageSettingEntity pageInfo = PageSettingRepository.findById(pageSetting.getGroup_name()).get();
+			pageSettingEntity pageInfo = PageSettingRepository.findById(pageSetting.getGroup_name()).orElse(new pageSettingEntity());
+//			pageSettingEntity pageInfo = PageSettingRepository.findById(pageSetting.getGroup_name())
+//					.stream().map(pageSettingDetailEntity::getPageSettingDetailEntity)
+//					.flatMap(List::stream);
 
 			//detail
 			if (pageInfo != null && !"".equals(pageInfo)) {
@@ -44,6 +47,7 @@ public class pageSettingService {
 				//entitiy -> dto
 				pageSetting = pageSetting.pageSettingToDto(pageInfo);
 				List<pageSettingDetailEntity> detail = pageSetting.getPageSettingDetailEntity();
+
 				for (pageSettingDetailEntity pageDetail : detail) {
 
 					dataGroup.put("group_type", pageDetail.getGroup_type() );
@@ -82,8 +86,6 @@ public class pageSettingService {
         	result.put("resultCode", "99"); //오류
         	result.put("resultMsg", e.getMessage());
         }
-
         return result;
 	}
-	
 }

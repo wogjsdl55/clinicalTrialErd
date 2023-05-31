@@ -3,12 +3,10 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import Vuetify from 'vuetify';
 
 import 'vuetify/dist/vuetify.min.css';
 import 'font-awesome/css/font-awesome.css';
-
-import Vuetify from 'vuetify';
-
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './styles/global.css';
 
@@ -57,20 +55,15 @@ new Vue({
   methods: {
     setLanguage(language) {
       const vm = this;
-
       localStorage.setItem('language', language);
-    
       document.documentElement.lang = language;
-    
       vm.$i18n.locale = language;
-    
       vm.$vuetify.lang.current = language;
     }
   },
 
   created() {
     const vm = this;
-
     vm.setLanguage('ko');
   },
 })

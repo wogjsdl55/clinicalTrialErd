@@ -1,5 +1,6 @@
 package clinical.data;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
@@ -17,7 +19,7 @@ import java.util.Date;
 public class scnInvestigationDto {
 	private String user_email;
 	private String age;
-	private Date birthday;
+	private LocalDate birthday;
 	private String ethnic;
 	private String gender;
 	private String races;
@@ -26,7 +28,7 @@ public class scnInvestigationDto {
 
 
 	@Builder
-	public scnInvestigationDto(String user_email, String age, Date birthday, String ethnic, String gender, String races, LocalTime time_birth, LocalDateTime regdate) {
+	public scnInvestigationDto(String user_email, String age, LocalDate birthday, String ethnic, String gender, String races, LocalTime time_birth, LocalDateTime regdate) {
 		this.user_email = user_email;
 		this.age = age;
 		this.birthday = birthday;

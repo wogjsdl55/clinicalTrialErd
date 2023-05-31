@@ -177,7 +177,7 @@ export default {
 
       vm.selectedIndex = selectedIndex;
 
-      return vm.$router.push({ name: routeName });
+      return vm.$router.push({ name: routeName }).catch(()=>{});
     }
   }
 }

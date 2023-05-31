@@ -31,8 +31,7 @@ public class bioInfoService {
 	public Map<String, String> getBioInfo(String pageNo) {
 		Map<String, String> result = new HashMap<>();
 		Map<String, Object> bodyData = new HashMap<>();
-		
-        String jsonPrintString = null;
+        String jsonPrintString = "";
         try {
         	String url = "http://apis.data.go.kr/1471000/MdcinClincTestInfoService01/getMdcinClincTestInfoList01?";
         	String serviceKey = "rqlGv54I/NdoOyDHmtZlkuRcaIaFgVs9Y57aOqSoe3uoYiSyogVGIn6JyGJVELIyc89cY8zkfnKXVgg9IUGrmQ==";
@@ -55,23 +54,18 @@ public class bioInfoService {
             bodyData =(Map<String, Object>) ((Map<String, Object>) resultMap.getBody()).get("body");
             
             result.put("statusCode", Integer.toString(resultMap.getStatusCodeValue())); //http status code를 확인
-            //result.put("header", resultMap.getHeaders().toString()); //헤더 정보 확인
-            
           //데이터를 제대로 전달 받았는지 확인 string형태로 파싱해줌
             ObjectMapper mapper = new ObjectMapper();
             
             result.put("totalCount", bodyData.get("totalCount").toString()); //실제 데이터 정보 확인
             result.put("items", mapper.writeValueAsString(bodyData.get("items")));
             result.put("resultCode", "1"); //실제 데이터 정보 확인
-            
         } catch (Exception e) {
         	result.put("resultCode", "99"); //실제 데이터 정보 확인
         	result.put("resultMsg", e.getMessage()); //실제 데이터 정보 확인
         }
 
         return result;
-   
-
-	}
+   	}
 	
 }

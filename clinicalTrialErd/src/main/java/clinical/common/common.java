@@ -1,29 +1,25 @@
 package clinical.common;
 
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.crypto.SecretKey;
-
-import io.jsonwebtoken.Claims;
-import jakarta.servlet.http.HttpServletRequest;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
-import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
 @Component
 public class common {
 
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	@Value("spring.jwt.secret")
 	private String secretKey;
 	//암호화
@@ -65,10 +61,10 @@ public class common {
 		
 		return decryptText; 
 	}
-	
+
 	//Jwts 토큰 설정
 	public String createToken(String user_email) {
-		
+
 		//Header 부분 설정
         Map<String, Object> headers = new HashMap<>();
         headers.put("typ", "JWT");
@@ -99,26 +95,7 @@ public class common {
 		return jwt;
 	}
 
-	// Jwt Token에서 User PK 추출
-	public Claims getClamins(String token) {//JWT조회(?)
-		Claims claims = Jwts.parser()
-				.setSigningKey(secretKey)
-				.parseClaimsJws(token)//싸인이 포함된 jwt = jws
-				.getBody();
-		return claims;
-	}
 
-	// 토큰검증
-//	fun verifyToken(token: String): Boolean {
-//		return try {
-//			val claims = getAllClaims(token)
-//			val expiration = claims.expiration
-//			expiration.after(Date())
-//		} catch (e: JwtException) {
-//			false
-//		} catch (e: IllegalArgumentException) {
-//			false
-//		}
-// 	}
+
 
 }

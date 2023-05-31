@@ -10,12 +10,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class pageSettingDetailDto {
-	private String seq;
+	private Integer seq;
 	private String group_type;
 	private List<pageSettingValueEntity> PageSettingValueEntity;
 
 	@Builder
-	public pageSettingDetailDto(String seq, String group_type, List<pageSettingValueEntity> PageSettingValueEntity) {
+	public pageSettingDetailDto(Integer seq, String group_type, List<pageSettingValueEntity> PageSettingValueEntity) {
 		this.seq = seq;
 		this.group_type = group_type;
 		this.PageSettingValueEntity = PageSettingValueEntity;

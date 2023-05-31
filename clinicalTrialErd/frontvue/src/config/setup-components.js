@@ -17,6 +17,7 @@ import TotalEarningsStatistic from '../components/statistics/TotalEarningsStatis
 
 //버튼 종류
 import DeleteButton from '../components/button/deleteButton';
+import EditButton from '../components/button/editButton';
 //type 종류
 import DateType from '../components/type/DateType.vue';
 import TextType from '../components/type/TextType.vue';
@@ -46,6 +47,7 @@ function setupComponents(Vue){
   Vue.component('timeType', TimeType);
 
   Vue.component('deleteButton', DeleteButton);
+  Vue.component('editButton', EditButton);
 }
 
 

@@ -26,14 +26,8 @@
 <script>
 export default {
   name: 'App',
-  created() {
-    
-  },
-  data() {
-    return {
-      drawer: true
-    }
-  }
+  created() { },
+  data() { return { drawer: true }}
 }
 </script>
 

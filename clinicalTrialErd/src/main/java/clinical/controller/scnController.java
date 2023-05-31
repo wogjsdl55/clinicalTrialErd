@@ -4,6 +4,7 @@ import clinical.data.scnAdministrationDto;
 import clinical.data.scnInvestigationDto;
 import clinical.data.scnVisitDto;
 import clinical.service.scnService;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,8 @@ public class scnController {
 	@PostMapping("visit/select")
 	public Map<String, String> selectVisit(@RequestBody scnVisitDto visit) {
 		Map<String, String> result = new HashMap<>();
+
+
 		result = ScnService.selectScnVisit(visit);
 		return result;
 	}
@@ -82,6 +85,15 @@ public class scnController {
 		return result;
 	}
 
+
+	//본체 투여 삭제 API
+	@PostMapping("administration/delete")
+	public Map<String, String> deleteAdministration(@RequestBody scnAdministrationDto administration) {
+		Map<String, String> result = new HashMap<>();
+
+		result = ScnService.deleteAdministration(administration);
+		return result;
+	}
 
 }
 

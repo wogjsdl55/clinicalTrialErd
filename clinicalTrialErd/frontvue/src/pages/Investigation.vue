@@ -1,33 +1,17 @@
 <template>
   <v-container grid-list-xl fluid>
-    <v-card color="#f2f4f7"  height="55" class="font-weight-bold">
-        <v-card-text>인구학적 조사</v-card-text>
-    </v-card>
+    <v-card color="#f2f4f7"  height="55" class="font-weight-bold"><v-card-text>인구학적 조사</v-card-text></v-card>
         
     <v-card  v-for="(data, index) in dataList" v-bind:key="data.group_type" :key="index">
         <v-card color="#f2f4f7" height="auto" width="300" style="display: flex;"> 
           <v-card-text >{{ data.group_etc1 }}</v-card-text>
 
-          <v-card width="0" >
-            <component  v-bind:is="data.group_type" v-bind:results="data"  @dataCheck="dataCheck" />
-          </v-card>
+          <v-card width="0" ><component  v-bind:is="data.group_type" v-bind:results="data"  @dataCheck="dataCheck" /></v-card>
       </v-card>  
     </v-card>
 
-    <v-btn
-      color="primary"
-      style="margin: 3rem; margin-left: 30rem;"
-      @click="saveButton"
-    >
-      저장
-    </v-btn>
+    <v-btn color="primary" style="margin: 3rem; margin-left: 30rem;" @click="saveButton">저장</v-btn>
 
-    <v-snackbar
-      v-model="showResult"
-      :timeout="2000"
-      top>
-      {{ result }}
-    </v-snackbar>
   </v-container>
 </template>
 
@@ -38,13 +22,11 @@ export default {
     return {
       radiodate: '',
       pickDate: '',
-      timeData: [],
-      items: [],
       dataList: {},
       resultList: {},
+      timeData: [],
+      items: [],
       formData: [],
-      showResult: false,
-      result: '',
     }
   },
 
@@ -52,27 +34,31 @@ export default {
     const vm = this;
     //생년월일
     vm.$EventBus.$on('pickDate', function(pickDate){ vm.pickDate = pickDate; });
-    //axios 통신으로 spring에 데이터 가져오기
+
+    //axios 통신으로 spring에 페이지 데이터 가져오기
     vm.$axios.post('/pageSetting/getInfo', {
-    headers : {"Content-Type" : "application/json"},
+      headers : {"Content-Type" : "application/json"},
       //페이지명 설정
       group_name: 'Investigation'
     })
+
     .then(function(response) {
       //0:실패, 1: 성공, 99:에러
       if(response.data.resultCode == 1){
+
         // eval 함수를 사용하면, 문자열을 넣어도 코드로 인식하게된다
         vm.items = eval('['+ response.data.data + ']');
         vm.resultList = eval(vm.items[0].dataList);
 
         //인구학적조사 데이터 가져오기
         vm.$axios.post('/scn/investigation/select', {
-        headers : {"Content-Type" : "application/json"},
+          headers : {"Content-Type" : "application/json"},
           //페이지명 설정
           token: vm.$store.getters.token,
           user_email: vm.$store.getters.userEmail,
           visit_date: '',
         })
+
         .then(function(response) {
           //0:실패, 1: 성공, 99:에러
           if(response.data.resultCode == 1){
@@ -85,12 +71,12 @@ export default {
             vm.resultList[3].group_data = vm.items[0].gender;
             vm.resultList[4].group_data = vm.items[0].races;
             vm.resultList[5].group_data = vm.items[0].ethnic;
-
-            vm.dataList = vm.resultList;
+            
           }
+          vm.dataList = vm.resultList;
         })
-        .catch(function(error) { console.log(error); });
 
+        .catch(function(error) { console.log(error); });
       }
       else{alert('오류가 발생하였습니다.' + response.data.resultMsg);}
     })
@@ -115,14 +101,15 @@ export default {
         gender:     vm.formData[2],
         races:      vm.formData[3],
         time_birth: vm.timeData[0],
-        
       })
+
       .then(function(response) {
         //0:실패, 1: 성공, 99:에러
-        if(response.data.resultCode == 1){ alert(response.data.resultMsg); }
-      })
+        if(response.data.resultCode == 1){ alert(response.data.resultMsg);  vm.$router.go();}
+        else {  alert(response.data.resultMsg); }})
       .catch(function(error) { console.log(error); });
     },
+
     dataCheck(dataCheck){
       const vm = this;
       vm.dataCheck = dataCheck;
@@ -138,7 +125,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

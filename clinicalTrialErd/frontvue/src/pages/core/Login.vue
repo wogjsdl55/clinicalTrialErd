@@ -65,9 +65,7 @@ export default {
       error: false,
       showResult: false,
       result: '',
-      rules: {
-        required: value => !!value || 'Required.'
-      }
+      rules: { required: value => !!value || 'Required.' }
     }
   },
 
@@ -75,30 +73,19 @@ export default {
     login() {
       const vm = this;
 
-      if (!vm.userEmail) {  
-        vm.result = "이메일이 입력되지 않았습니다.";
-        vm.showResult = true;
+      if (!vm.userEmail) {  vm.result = "이메일이 입력되지 않았습니다."; vm.showResult = true; return; }
+      if (!vm.userPassword) {  vm.result = "패스워드가 입력되지 않았습니다."; vm.showResult = true; return; }
 
-        return;
-      }
-      if (!vm.userPassword) {  
-        vm.result = "패스워드가 입력되지 않았습니다.";
-        vm.showResult = true;
-
-        return;
-      }
-
-      //axios 통신으로 spring에 데이터 전달
+      //axios 통신으로 spring에 API
       vm.$axios.post('/member/getMemberInfo', {
           headers : {"Content-Type" : "application/json"},
           user_email: vm.userEmail
           , user_pwd: vm.userPassword
         })
+
         .then(function(response) {
           //0:실패, 1: 성공, 99:에러
-          //에러발생
-          if(response.data.resultCode == 99){
-            alert("오류가 발생하였습니다."+ response.data.resultMsg);
+          if(response.data.resultCode == 99){ alert("오류가 발생하였습니다."+ response.data.resultMsg);
           //정상 로그인
           }else if(response.data.resultCode == 1){
             //토큰 store에 저장
@@ -106,13 +93,9 @@ export default {
             vm.$store.dispatch('user_email', vm.userEmail)
             vm.$router.push({ name: 'Dashboard' });
           //기타 메세지
-          }else{
-            alert(response.data.resultMsg);
-          }
+          }else{ alert(response.data.resultMsg); }
         })
-        .catch(function(error) {
-          console.log(error);
-        });
+        .catch(function(error) { console.log(error); });
     }
   }
 }
