@@ -45,33 +45,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/1-23-049/git/clinicalTrialErd",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
-    "spring.configuration.checksum": "3025a590b1f3f9c5d49d5318f6ebd821",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/1-23-049/git/clinicalTrialErd&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;3025a590b1f3f9c5d49d5318f6ebd821&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="clinical.data" />
+      <recent name="clinical" />
       <recent name="clinical.repository" />
+      <recent name="clinical.data" />
       <recent name="clinical.service" />
       <recent name="clinical.controller" />
     </key>
@@ -117,6 +118,48 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
+    <configuration name="clinicalTrialErd [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/clinicalTrialErd" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="clinicalTrialErd" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/clinicalTrialErd" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <configuration name="springApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="clinicalTrialErd.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="clinical.springApplication" />
@@ -126,6 +169,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.clinicalTrialErd [dependencies]" />
+        <item itemvalue="Gradle.clinicalTrialErd" />
         <item itemvalue="Gradle.Tests in 'clinicalTrialErd'" />
         <item itemvalue="Application.springApplication" />
       </list>
@@ -143,11 +188,31 @@
       <workItem from="1683074494547" duration="548000" />
       <workItem from="1683075054139" duration="544000" />
       <workItem from="1683075606017" duration="465000" />
-      <workItem from="1683076079908" duration="90702000" />
+      <workItem from="1683076079908" duration="156563000" />
+      <workItem from="1684722204984" duration="77050000" />
+      <workItem from="1685080511576" duration="20688000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.springframework.security.web.servletapi.HttpServlet3RequestFactory" memberName="authenticationDetailsSource" />
+        <PinnedItemInfo parentTag="org.springframework.security.web.firewall.StrictHttpFirewall" memberName="encodedUrlBlocklist" />
+        <PinnedItemInfo parentTag="org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest" memberName="response" />
+        <PinnedItemInfo parentTag="org.apache.catalina.core.ApplicationFilterChain" memberName="filters" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="this" />
+        <watch expression="responset" />
+        <watch expression="((HeaderWriterResponse)((HeaderWriterRequest)((Servlet3SecurityContextHolderAwareRequestWrapper)request).request).response).response" custom="org.springframework.security.web.servletapi.HttpServlet3RequestFactory.Servlet3SecurityContextHolderAwareRequestWrapper,org.springframework.security.web.header.HeaderWriterFilter.HeaderWriterResponse,org.springframework.security.web.header.HeaderWriterFilter.HeaderWriterRequest" />
+        <watch expression="((HeapCharBuffer)((B2CConverter)((Request)((RequestFacade)((StrictFirewalledRequest)((HeaderWriterRequest)((Servlet3SecurityContextHolderAwareRequestWrapper)request).request).request).request).request).URIConverter).cb).address" custom="org.apache.catalina.connector.RequestFacade,org.apache.catalina.connector.Request,java.nio.HeapCharBuffer,org.springframework.security.web.servletapi.HttpServlet3RequestFactory.Servlet3SecurityContextHolderAwareRequestWrapper,org.springframework.security.web.firewall.StrictHttpFirewall.StrictFirewalledRequest,org.springframework.security.web.header.HeaderWriterFilter.HeaderWriterRequest,org.apache.tomcat.util.buf.B2CConverter" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
