@@ -31,7 +31,7 @@ public class springFilter implements Filter {
        // byte[] keyBytes = Decoders.BASE64.decode(token);
        //this.key = Keys.hmacShaKeyFor(keyBytes);
 
-        log.info("key="+ this.key);
+       //log.info("key="+ this.key);
         if (token != null && !"".equals(key) ) {
             // 토큰이 유효할 경우 토큰에서 Authentication 객체를 가지고 와서 SecurityContext 에 저장
             Authentication authentication = getAuthentication(token);
