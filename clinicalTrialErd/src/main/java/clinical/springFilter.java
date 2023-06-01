@@ -26,10 +26,10 @@ public class springFilter implements Filter {
         // 1. Request Header 에서 JWT 토큰 추출
        String responset = String.valueOf(((HttpServletResponse) response));
        String token = resolveToken((HttpServletRequest) request);
-       System.out.println("response="+ ( (HttpServletRequest) request).getHeader("vuex"));
-        //validateToken 으로 토큰 유효성 검사
-        // byte[] keyBytes = Decoders.BASE64.decode(token);
-        //this.key = Keys.hmacShaKeyFor(keyBytes);
+       //System.out.println("response="+ ( (HttpServletRequest) request).getHeader("vuex"));
+       //validateToken 으로 토큰 유효성 검사
+       // byte[] keyBytes = Decoders.BASE64.decode(token);
+       //this.key = Keys.hmacShaKeyFor(keyBytes);
 
         log.info("key="+ this.key);
         if (token != null && !"".equals(key) ) {
@@ -43,7 +43,7 @@ public class springFilter implements Filter {
     // Request Header 에서 토큰 정보 추출
     private String resolveToken(HttpServletRequest request) {
         String bearerToken = request.getHeader("host");
-        System.out.println("AccessToken="+ bearerToken);
+        //System.out.println("AccessToken="+ bearerToken);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer")) {
             return bearerToken.substring(7);
         }
