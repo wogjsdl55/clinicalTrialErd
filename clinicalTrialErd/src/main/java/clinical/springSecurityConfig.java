@@ -33,7 +33,7 @@ public class springSecurityConfig {
                 .and()
                 .authorizeRequests()
                 .requestMatchers("/**", "/static/**","/Register", "/member/**", "/bioInfo/**", "/pageSetting/**").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().authentic ated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

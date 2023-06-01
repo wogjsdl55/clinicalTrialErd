@@ -4,6 +4,6 @@ module.exports = defineConfig({
   transpileDependencies: true,
   outputDir: '../src/main/resources/static', // Build Directory
 	devServer: {
-		proxy: 'http://13.239.74.201' // Spring Boot Server
+		proxy: 'http://13.239.74.201:8080' // Spring Boot Server
 	}
 })

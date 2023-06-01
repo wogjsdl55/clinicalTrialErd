@@ -27,7 +27,7 @@ import "vue-swatches/dist/vue-swatches.min.css"
 // EventBus 생성
 Vue.prototype.$EventBus = new Vue()
 Vue.use(VueChartkick, { adapter: Chart });
-axios.defaults.baseURL = 'http://13.239.74.201'
+axios.defaults.baseURL = 'http://13.239.74.201:8080'
 Vue.prototype.$axios = axios
 Vue.component('full-calendar', fullCalendar);
 Vue.component('swatches', swatches);
