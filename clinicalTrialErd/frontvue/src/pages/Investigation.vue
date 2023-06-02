@@ -105,7 +105,7 @@ export default {
 
       .then(function(response) {
         //0:실패, 1: 성공, 99:에러
-        if(response.data.resultCode == 1){ alert(response.data.resultMsg);  vm.$router.push({ name: 'Investigation' });}
+        if(response.data.resultCode == 1){ alert(response.data.resultMsg);  vm.$router.go();}
         else {  alert(response.data.resultMsg); }})
       .catch(function(error) { console.log(error); });
     },
