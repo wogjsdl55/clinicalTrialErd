@@ -275,6 +275,7 @@ export default {
           click: () => {
             const vm = this;
             vm.$store.dispatch('setToken', null);
+            vm.$store.dispatch('setUserEmail', null);
             vm.$router.push({ name: 'Login' });
           }
         }
