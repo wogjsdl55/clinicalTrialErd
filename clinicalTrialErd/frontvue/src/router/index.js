@@ -95,7 +95,7 @@ export default new Router({
       path: '/register',
       name: 'Register',
       component: Register,
-      meta: { allowAnonymous: true }
+      meta: { allowAnonymous: true}
     },
   ]
 });
