@@ -14,7 +14,7 @@ import java.util.Map;
 @RequestMapping("/error")
 public class errorController implements ErrorController {
 
-	@GetMapping("/error")
+	@GetMapping("/")
 	public String redirectRoot(){
 		return "index.html";
 	}
