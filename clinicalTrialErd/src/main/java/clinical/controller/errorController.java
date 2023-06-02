@@ -11,10 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/error")
 public class errorController implements ErrorController {
 
-	@GetMapping("/")
+	@GetMapping("/error")
 	public String redirectRoot(){
 		return "index.html";
 	}
