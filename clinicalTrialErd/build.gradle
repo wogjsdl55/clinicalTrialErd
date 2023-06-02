@@ -42,7 +42,7 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	//프로젝트 생성시 탬플릿 엔진 지정 누락
-	//implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	// https://mvnrepository.com/artifact/org.postgresql/postgresql
 
 }
