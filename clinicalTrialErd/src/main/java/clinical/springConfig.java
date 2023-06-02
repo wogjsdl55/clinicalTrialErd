@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 
-@Configuration
+//@Configuration
 public class springConfig implements WebMvcConfigurer {
 	//@Override
 //	public void addCorsMappings(CorsRegistry registry) {
