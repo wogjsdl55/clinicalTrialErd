@@ -14,14 +14,12 @@ import java.util.Map;
 @RequestMapping("/error")
 public class errorController implements ErrorController {
 
-	private final String ERROR_PATH = "/error";
-
-	@GetMapping(ERROR_PATH)
+	@GetMapping("/error")
 	public String redirectRoot(){
 		return "index.html";
 	}
 
 	public String getErrorPath(){
-		return null;
+		return "/error";
 	}
 }
