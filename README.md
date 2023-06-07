@@ -4,14 +4,17 @@
 ## 환경셋팅
 ------------------------------
 ### BACK
-####  springframework.boot version--3.0.5
+    springframework.boot 3.0.5
 
 ### FRONT
-#### vue version--2.5.2
-#### vuetify version--1.3.11
+    vue     2.5.2
+    vuetify 1.3.11
 
 ### DB
-#### PostgreSQL--15
+    PostgreSQL--15
 
+### AWS
+    URL = http://13.239.74.201:8080
+    EC2 RDS VPC  
 
 ------------------------------
